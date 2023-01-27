@@ -1,6 +1,18 @@
 {
-	"id": "146e52f0-fd32-4814-8e58-8a3c0f4d5eb7",
+	"id": "37ac7c42-ec2c-405d-82e8-d75c01b51cc0",
 	"values": [
+		{
+			"key": "loginUrl",
+			"value": "https://xcalibur-auth-api-staging.azurewebsites.net/api/Security/login",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "ApiKey",
+			"value": "c12c49a5-66b8-4c9f-9d30-4cfb907f7270",
+			"type": "default",
+			"enabled": true
+		},
 		{
 			"key": "CoreApiUrl",
 			"value": "https://xcalibur-api-staging.azurewebsites.net/api",
@@ -8,14 +20,14 @@
 			"enabled": true
 		},
 		{
-			"key": "BEARERTOKEN",
+			"key": "Access_Token",
 			"value": "",
 			"type": "any",
 			"enabled": true
 		}
 	],
-	"name": "My Workspace Globals",
+	"name": "Globals",
 	"_postman_variable_scope": "globals",
-	"_postman_exported_at": "2023-01-26T11:31:27.700Z",
-	"_postman_exported_using": "Postman/9.31.0"
+	"_postman_exported_at": "2023-01-26T11:32:33.271Z",
+	"_postman_exported_using": "Postman/10.8.6"
 }
