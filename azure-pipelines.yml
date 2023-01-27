@@ -8,10 +8,11 @@ pool:
 steps:
 
 - task: Npm@1
+  displayName: NPM INSTALL
   inputs:
     command: 'install'
 - task: Npm@1
-  displayName: New man install
+  displayName: NEW MAN INSTALL
   inputs:
     command: 'custom'    
     customCommand: 'npm install -g newman-reporter-htmlextra'
