@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: "windows-latest"
 
 steps:
 - script: echo Hello, world!
@@ -20,5 +20,5 @@ steps:
 
 - task: Npm@1
   inputs:
-    command: 'install'
+    command: 'install newman -g'
     
