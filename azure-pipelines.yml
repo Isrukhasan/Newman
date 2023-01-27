@@ -8,14 +8,15 @@ pool:
 steps:
 
 - task: Npm@1
-  displayName: NPM INSTALL
-  inputs:
-    command: 'install'
-- task: Npm@1
   displayName: NEW MAN INSTALL
   inputs:
+    command: 'custom'
+    customCommand: 'install newman -g'
+- task: Npm@1
+  displayName: 
+  inputs:
     command: 'custom'    
-    customCommand: 'npm install -g newman-reporter-htmlextra'
+    customCommand: 'install -g newman-reporter-htmlextra'
 
 - task: CmdLine@2
   inputs:
