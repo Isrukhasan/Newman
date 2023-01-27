@@ -1,7 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
 
 trigger:
 - main
@@ -24,3 +20,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'newman run collection.json -g globals.json -r htmlextra--reporterscli.junit.json,htmlextra --reporter-junit-export junitReport.xml --reporter-htmlextra-export testReport.html'
+  
+- task: PublishHtmlReport@1
+  inputs:
+    reportDir: '$(System.DefaultWorkingDirectory)'
