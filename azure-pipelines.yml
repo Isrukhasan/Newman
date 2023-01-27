@@ -21,13 +21,13 @@ steps:
 - task: Npm@1
   inputs:
     command: 'custom'
-    workingDir: 'collections'
+    workingDir: 'Xcaliber-Newman'
     customCommand: 'install newman -g'
 
 - task: Npm@1
   inputs:
     command: 'custom'
-    workingDir: 'collections'
+    workingDir: 'Xcaliber-Newman'
     customCommand: 'install -g newman-reporter-htmlextra'
 
 - task: CmdLine@2
