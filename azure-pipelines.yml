@@ -15,12 +15,9 @@ steps:
 - task: Npm@1
   inputs:
     command: 'custom'    
-    customCommand: 'install -g newman-reporter-htmlextra'
+    customCommand: 'npm install -g newman-reporter-htmlextra'
 
 - task: CmdLine@2
   inputs:
-    script: 'newman run collection.json -g globals.json -r htmlextra--reporterscli.junit.json,htmlextra --reporter-junit-export junitReport.xml --reporter-htmlextra-export testReport.html'
+    script: 'newman run collection.json -g globals.json -r htmlextra --reporter-htmlextra-export ./results/report.html'
   
-- task: PublishHtmlReport@1
-  inputs:
-    reportDir: '$(System.DefaultWorkingDirectory)'
