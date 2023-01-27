@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "a70ff584-5f2f-49ea-81bf-b7a14303a6bd",
+		"name": "Core API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Vehicle Location-pull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.response.code===200 ?\r",
+							"pm.test(\"Status Code Is \"+pm.response.code+\", Number of Data= \"+jsonData?.length,function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							":\r",
+							"    pm.test(\"Status Code Is \"+pm.response.code,function(){\r",
+							"    pm.expect(pm.response.to.have.status(200));\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Example with a full-fledged request\r",
+							"const postRequest = {\r",
+							"  url: 'http://xcalibur-auth-api-staging.azurewebsites.net/api/Security/login',\r",
+							"  method: 'POST',\r",
+							"  header: {\r",
+							"    'Content-Type': 'application/json',\r",
+							"    'X-Foo': 'bar'\r",
+							"  },\r",
+							"  body: {\r",
+							"    mode: 'raw',\r",
+							"    raw: JSON.stringify({ username: 'admin@dalconlimited.co.uk', password: 'password' })\r",
+							"  }\r",
+							"};\r",
+							"pm.sendRequest(postRequest, (error, res) => {\r",
+							"    pm.globals.set(\"BEARERTOKEN\", res.json().accessToken)\r",
+							"  //console.log(error ? error : res.json());  \r",
+							"  //console.log(res.json());\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARERTOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "ApiKey",
+						"value": "c12c49a5-66b8-4c9f-9d30-4cfb907f7270",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastSyncDateUtc\": \"2020-01-26T11:16:19.141Z\",\r\n  \"startIndex\": 0,\r\n  \"resultSetLength\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CoreApiUrl}}/VehicleLocation/pull",
+					"host": [
+						"{{CoreApiUrl}}"
+					],
+					"path": [
+						"VehicleLocation",
+						"pull"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Currency Pull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.response.code===200 ?\r",
+							"pm.test(\"Status Code Is \"+pm.response.code+\", Number of Data= \"+jsonData?.length,function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							":\r",
+							"    pm.test(\"Status Code Is \"+pm.response.code,function(){\r",
+							"    pm.expect(pm.response.to.have.status(200));\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// // Example with a full-fledged request\r",
+							"// const postRequest = {\r",
+							"//   url: 'http://xcalibur-auth-api-staging.azurewebsites.net/api/Security/login',\r",
+							"//   method: 'POST',\r",
+							"//   header: {\r",
+							"//     'Content-Type': 'application/json',\r",
+							"//     'X-Foo': 'bar'\r",
+							"//   },\r",
+							"//   body: {\r",
+							"//     mode: 'raw',\r",
+							"//     raw: JSON.stringify({ username: 'admin@dalconlimited.co.uk', password: 'password' })\r",
+							"//   }\r",
+							"// };\r",
+							"// pm.sendRequest(postRequest, (error, res) => {\r",
+							"//     pm.globals.set(\"BEARERTOKEN\", res.json().accessToken)\r",
+							"//   //console.log(error ? error : res.json());  \r",
+							"//   //console.log(res.json());\r",
+							"// });\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARERTOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "ApiKey",
+						"value": "c12c49a5-66b8-4c9f-9d30-4cfb907f7270",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastSyncDateUtc\": \"2020-01-26T11:16:19.141Z\",\r\n  \"startIndex\": 0,\r\n  \"resultSetLength\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CoreApiUrl}}/Currency/pull",
+					"host": [
+						"{{CoreApiUrl}}"
+					],
+					"path": [
+						"Currency",
+						"pull"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
