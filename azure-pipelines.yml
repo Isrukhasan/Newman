@@ -13,7 +13,7 @@ steps:
     command: 'custom'
     customCommand: 'install newman -g'
 - task: Npm@1
-  displayName: 
+  displayName: HTML EXTRA
   inputs:
     command: 'custom'    
     customCommand: 'install -g newman-reporter-htmlextra'
@@ -24,9 +24,14 @@ steps:
     command: 'custom'    
     customCommand: 'install -g newman-reporter-html'
 - task: CmdLine@2
-  displayName: Run script from collection
+  displayName: PC USER1 
   inputs:
     script: 'newman run collection.json -g globals.json --reporter-html-export TestReport.html'
+
+- task: CmdLine@2
+  displayName: PC-USER2
+  inputs:
+    script: 'newman run collection-1.json -g globals.json --reporter-html-export TestReport.html'
 
 - task: PublishTestResults@2
   inputs:
