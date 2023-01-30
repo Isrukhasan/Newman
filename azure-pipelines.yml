@@ -28,10 +28,10 @@ steps:
   inputs:
     script: 'newman run collection.json -g globals.json --reporter-html-export TestReport.html'
 
-- task: CmdLine@2
-  displayName: PC-USER2
-  inputs:
-    script: 'newman run collection_one.json -g globals.json --reporter-html-export TestReport.html'
+# - task: CmdLine@2
+#   displayName: PC-USER2
+#   inputs:
+#     script: 'newman run collection_one.json -g globals.json --reporter-html-export TestReport.html'
 
 - task: PublishTestResults@2
   inputs:
