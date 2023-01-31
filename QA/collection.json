@@ -1,0 +1,610 @@
+{
+	"info": {
+		"_postman_id": "db59145b-acf7-4711-96c8-54fc599b74c3",
+		"name": "Core API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25484126"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.response.code===200 ?\r",
+							"pm.test(\"Status Code Is \"+pm.response.code,function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.globals.set(\"Access_Token\",jsonData.accessToken);\r",
+							"})\r",
+							":\r",
+							"    pm.test(\"Status Code Is \"+pm.response.code,function(){\r",
+							"    pm.expect(pm.response.to.have.status(200));\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"admin@dalconlimited.co.uk\",\r\n  \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{loginUrl}}",
+					"host": [
+						"{{loginUrl}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Complex Synchronisation Entity-pull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.response.code===200 ?\r",
+							"pm.test(\"Status Code Is \"+pm.response.code+\", Number of Data= \"+jsonData?.length,function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							":\r",
+							"    pm.test(\"Status Code Is \"+pm.response.code,function(){\r",
+							"    pm.expect(pm.response.to.have.status(200));\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Access_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "ApiKey",
+						"value": "{{ApiKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{CoreApiUrl}}/ComplexSynchronisationEntity/pull",
+					"host": [
+						"{{CoreApiUrl}}"
+					],
+					"path": [
+						"ComplexSynchronisationEntity",
+						"pull"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vehicle Location-pull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.response.code===200 ?\r",
+							"pm.test(\"Status Code Is \"+pm.response.code+\", Number of Data= \"+jsonData?.length,function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							":\r",
+							"    pm.test(\"Status Code Is \"+pm.response.code,function(){\r",
+							"    pm.expect(pm.response.to.have.status(200));\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Access_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "ApiKey",
+						"value": "{{ApiKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{CoreApiUrl}}/VehicleLocation/pull",
+					"host": [
+						"{{CoreApiUrl}}"
+					],
+					"path": [
+						"VehicleLocation",
+						"pull"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invoice-pull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.response.code===200 ?\r",
+							"pm.test(\"Status Code Is \"+pm.response.code+\", Number of Data= \"+jsonData?.length,function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							":\r",
+							"    pm.test(\"Status Code Is \"+pm.response.code,function(){\r",
+							"    pm.expect(pm.response.to.have.status(200));\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Access_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Apikey",
+						"value": "{{ApiKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastSyncDateUtc\": \"2019-01-24T11:36:51.608Z\",\r\n  \"startIndex\": 0,\r\n  \"resultSetLength\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CoreApiUrl}}/Invoice/pull",
+					"host": [
+						"{{CoreApiUrl}}"
+					],
+					"path": [
+						"Invoice",
+						"pull"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Currency-pull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.response.code===200 ?\r",
+							"pm.test(\"Status Code Is \"+pm.response.code+\", Number of Data= \"+jsonData?.length,function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							":\r",
+							"    pm.test(\"Status Code Is \"+pm.response.code,function(){\r",
+							"    pm.expect(pm.response.to.have.status(200));\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Access_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "ApiKey",
+						"value": "{{ApiKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastSyncDateUtc\": \"2019-01-25\",\r\n  \"startIndex\": 0,\r\n  \"resultSetLength\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CoreApiUrl}}/Currency/pull",
+					"host": [
+						"{{CoreApiUrl}}"
+					],
+					"path": [
+						"Currency",
+						"pull"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer-pull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.response.code===200 ?\r",
+							"pm.test(\"Status Code Is \"+pm.response.code+\", Number of Data= \"+jsonData?.length,function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							":\r",
+							"    pm.test(\"Status Code Is \"+pm.response.code,function(){\r",
+							"    pm.expect(pm.response.to.have.status(200));\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Access_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "ApiKey",
+						"value": "{{ApiKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastSyncDateUtc\": \"2019-01-25T10:32:39.034Z\",\r\n  \"startIndex\": 0,\r\n  \"resultSetLength\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CoreApiUrl}}/Customer/pull",
+					"host": [
+						"{{CoreApiUrl}}"
+					],
+					"path": [
+						"Customer",
+						"pull"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delivery-pull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.response.code===200 ?\r",
+							"pm.test(\"Status Code Is \"+pm.response.code+\", Number of Data= \"+jsonData?.length,function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							":\r",
+							"    pm.test(\"Status Code Is \"+pm.response.code,function(){\r",
+							"    pm.expect(pm.response.to.have.status(200));\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Access_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "ApiKey",
+						"value": "{{ApiKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastSyncDateUtc\": \"2019-01-25T10:32:39.034Z\",\r\n  \"startIndex\": 0,\r\n  \"resultSetLength\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CoreApiUrl}}/Delivery/pull",
+					"host": [
+						"{{CoreApiUrl}}"
+					],
+					"path": [
+						"Delivery",
+						"pull"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delivery Docket-pull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.response.code===200 ?\r",
+							"pm.test(\"Status Code Is \"+pm.response.code+\", Number of Data= \"+jsonData?.length,function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							":\r",
+							"    pm.test(\"Status Code Is \"+pm.response.code,function(){\r",
+							"    pm.expect(pm.response.to.have.status(200));\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Access_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "ApiKey",
+						"value": "{{ApiKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastSyncDateUtc\": \"2019-01-25T10:32:39.034Z\",\r\n  \"startIndex\": 0,\r\n  \"resultSetLength\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CoreApiUrl}}/DeliveryDocket/pull",
+					"host": [
+						"{{CoreApiUrl}}"
+					],
+					"path": [
+						"DeliveryDocket",
+						"pull"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delivery Docket Items-pull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.response.code===200 ?\r",
+							"pm.test(\"Status Code Is \"+pm.response.code+\", Number of Data= \"+jsonData?.length,function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							":\r",
+							"    pm.test(\"Status Code Is \"+pm.response.code,function(){\r",
+							"    pm.expect(pm.response.to.have.status(200));\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Access_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "ApiKey",
+						"value": "{{ApiKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastSyncDateUtc\": \"2019-01-25T10:32:39.034Z\",\r\n  \"startIndex\": 0,\r\n  \"resultSetLength\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CoreApiUrl}}/DeliveryDocketItems/pull",
+					"host": [
+						"{{CoreApiUrl}}"
+					],
+					"path": [
+						"DeliveryDocketItems",
+						"pull"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delivery Item-pull",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.response.code===200 ?\r",
+							"pm.test(\"Status Code Is \"+pm.response.code+\", Number of Data= \"+jsonData?.length,function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							":\r",
+							"    pm.test(\"Status Code Is \"+pm.response.code,function(){\r",
+							"    pm.expect(pm.response.to.have.status(200));\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Access_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "ApiKey",
+						"value": "{{ApiKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lastSyncDateUtc\": \"2019-01-25T10:32:39.034Z\",\r\n  \"startIndex\": 0,\r\n  \"resultSetLength\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CoreApiUrl}}/DeliveryItem/pull",
+					"host": [
+						"{{CoreApiUrl}}"
+					],
+					"path": [
+						"DeliveryItem",
+						"pull"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
