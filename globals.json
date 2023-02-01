@@ -24,10 +24,22 @@
 			"value": "",
 			"type": "any",
 			"enabled": true
+		},
+		{
+			"key": "Name",
+			"value": "admin@dalconlimited.co.uk",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Pass",
+			"value": "password",
+			"type": "default",
+			"enabled": true
 		}
 	],
 	"name": "Globals",
 	"_postman_variable_scope": "globals",
-	"_postman_exported_at": "2023-01-26T11:32:33.271Z",
-	"_postman_exported_using": "Postman/10.8.6"
+	"_postman_exported_at": "2023-02-01T12:32:22.657Z",
+	"_postman_exported_using": "Postman/10.9.1"
 }
