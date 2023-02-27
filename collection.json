@@ -150,13 +150,7 @@
 					]
 				},
 				"method": "POST",
-				"header": [
-					{
-						"key": "ApiKey",
-						"value": ,
-						"type": "text"
-					}
-				],
+				
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n  \"lastSyncDateUtc\": \"2019-01-25\",\r\n  \"startIndex\": 0,\r\n  \"resultSetLength\": 100\r\n}",
