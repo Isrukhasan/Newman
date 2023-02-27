@@ -153,7 +153,7 @@
 				"header": [
 					{
 						"key": "ApiKey",
-						"value": "{{ApiKey}}",
+						"value": ,
 						"type": "text"
 					}
 				],
